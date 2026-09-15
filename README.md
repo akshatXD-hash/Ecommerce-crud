@@ -90,7 +90,13 @@ Create a database named `akshat` (or your preferred name) in PostgreSQL:
 CREATE DATABASE akshat;
 ```
 
-Update your database credentials in `src/main/resources/application.properties` (or set environment variables):
+Copy the template configuration and update your database credentials:
+
+```bash
+cp src/main/resources/application.properties.example src/main/resources/application.properties
+```
+
+Then edit `src/main/resources/application.properties` with your credentials:
 
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/akshat

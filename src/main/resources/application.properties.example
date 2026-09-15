@@ -1,10 +1,11 @@
 spring.application.name=Ecommerce
 
-
+# Database configuration (Replace with your local PostgreSQL credentials)
 spring.datasource.url=jdbc:postgresql://localhost:5432/akshat
 spring.datasource.username=postgres
-spring.datasource.password=akshatavani
+spring.datasource.password=your_password_here
 spring.datasource.driver-class-name=org.postgresql.Driver
 
+# JPA / Hibernate configuration
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
