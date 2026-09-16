@@ -31,4 +31,32 @@ public class ProductService {
         product.setImageData(image.getBytes());
         return repo.save(product);
     }
+
+
+    public Product updateProduct(int productId, Product product, MultipartFile image) throws IOException {
+        Product existingProduct = repo.findById(productId).orElse(null);
+
+        if (existingProduct == null) {
+            return null;
+        }
+
+        existingProduct.setName(product.getName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setBrand(product.getBrand());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setCategory(product.getCategory());
+        existingProduct.setReleaseDate(product.getReleaseDate());
+        existingProduct.setAvailable(product.isAvailable());
+        existingProduct.setStockQuantity(product.getStockQuantity());
+
+        existingProduct.setImageName(image.getOriginalFilename());
+        existingProduct.setImageType(image.getContentType());
+        existingProduct.setImageData(image.getBytes());
+
+        return repo.save(existingProduct);
+    }
+
+    public void deleteById(int productId) {
+       repo.deleteById(productId);
+    }
 }
