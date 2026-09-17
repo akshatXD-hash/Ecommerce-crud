@@ -20,7 +20,6 @@ public class ProductService {
         return repo.findAll();
     }
 
-
     public Product getById(int id) {
         return repo.findById(id).orElse(null);
     }
@@ -31,7 +30,6 @@ public class ProductService {
         product.setImageData(image.getBytes());
         return repo.save(product);
     }
-
 
     public Product updateProduct(int productId, Product product, MultipartFile image) throws IOException {
         Product existingProduct = repo.findById(productId).orElse(null);
@@ -57,6 +55,10 @@ public class ProductService {
     }
 
     public void deleteById(int productId) {
-       repo.deleteById(productId);
+        repo.deleteById(productId);
+    }
+
+    public List<Product> findBykeyword(String keyword) {
+        return repo.findByKeyword(keyword);
     }
 }
