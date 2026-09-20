@@ -11,6 +11,7 @@ import com.akshat.Ecommerce.repo.OrderRepo;
 import com.akshat.Ecommerce.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class OrderService {
     @Autowired
     private OrderRepo orderRepo;
 
+    @Transactional(readOnly = true)
     public  List<OrderResponse> getAllOrderResponses() {
         List<Order> orders = orderRepo.findAll();
         List<OrderResponse> orderResponses = new ArrayList<>();
@@ -56,6 +58,7 @@ public class OrderService {
        return orderResponses;
     }
 
+    @Transactional
     public OrderResponse placeOrder(OrderRequest request) {
        Order order = new Order();
        String orderId = "ORD"+ UUID.randomUUID().toString().substring(0,8).toUpperCase();
