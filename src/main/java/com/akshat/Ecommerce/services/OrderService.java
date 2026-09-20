@@ -12,6 +12,8 @@ import com.akshat.Ecommerce.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -71,8 +73,15 @@ public class OrderService {
        List<OrderItem> orderItems = new ArrayList<>();
 
        for(OrderItemRequest itemReq: request.items()){
+           if (itemReq.quantity() <= 0) {
+               throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantity must be positive");
+           }
            Product product = productRepo.findById(itemReq.productId())
-                   .orElseThrow(()->new RuntimeException("Product Not Found"));
+                   .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
+
+           if (!product.isAvailable() || product.getStockQuantity() < itemReq.quantity()) {
+               throw new ResponseStatusException(HttpStatus.CONFLICT, "Product is unavailable or has insufficient stock");
+           }
 
            product.setStockQuantity(product.getStockQuantity()-itemReq.quantity());
            productRepo.save(product);
