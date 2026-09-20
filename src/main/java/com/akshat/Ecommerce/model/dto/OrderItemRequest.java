@@ -1,7 +1,9 @@
 package com.akshat.Ecommerce.model.dto;
 
+import jakarta.validation.constraints.Positive;
+
 public record OrderItemRequest(
-        int productId,
-        int quantity
+        @Positive int productId,
+        @Positive int quantity
 ) {
 }
