@@ -88,7 +88,7 @@ Create a database named `akshat` (or your preferred name) in PostgreSQL:
 
 ```sql
 CREATE DATABASE akshat;
-```
+```  
 
 Copy the template configuration and update your database credentials:
 
