@@ -6,7 +6,7 @@
 [![Maven](https://img.shields.io/badge/Maven-3.9+-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-A robust, production-ready backend RESTful API service for an E-Commerce platform built with **Spring Boot**, **Spring Data JPA**, and **PostgreSQL**. Designed with clean layered architecture, supporting product lifecycle management, multipart image storage, and transactional order placement with real-time inventory management.
+A robust, production-ready backend RESTful API service for an E-Commerce platform built with **Spring Boot**, **Spring Data JPA**, and **PostgreSQL**. Designed with clean layered architecture, supporting product lifecycle management, multipart image storage and transactional order placement with real-time inventory management.
 
 ---
 
